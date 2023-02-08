@@ -1,5 +1,5 @@
-# Voice App Landing Page
-Free Landing Page Bootstrap Template for Alexa Skills and Google Actions
+# Regen Creatives
+WE CREATE SOLUTIONS THAT GROW WITH YOUR BUSINESS.
 
 ## Live Previews
 Alexa and Google Home: https://www.jovo.tech/downloads/voice-landing-page/
