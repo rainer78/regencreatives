@@ -1,5 +1,5 @@
 # Regen Creatives
-WE CREATE SOLUTIONS THAT GROW WITH YOUR BUSINESS.
+Growth Driven Design | Digital Marketing | Web Design | Voice Search Optimization
 
 ## Live Previews
 Alexa and Google Home: https://www.jovo.tech/downloads/voice-landing-page/
