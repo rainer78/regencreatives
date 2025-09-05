@@ -3,25 +3,15 @@ export const solarSystemTourSteps = [
     id: "welcome",
     title: "Welcome to Solar System Explorer",
     description:
-      "Welcome! This interactive tour will guide you through all the amazing features of our Solar System Explorer. You can navigate using the buttons or arrow keys.",
+      "Welcome! This interactive 3D solar system lets you explore planets, moons, and other celestial objects. Let's take a quick tour of the features.",
     position: "center" as const,
     highlight: false,
-    delay: 0,
-  },
-  {
-    id: "title",
-    title: "Solar System Explorer",
-    description:
-      "This is your Solar System Explorer - an interactive 3D visualization of our cosmic neighborhood with all planets, moons, and celestial objects.",
-    target: "#title",
-    position: "bottom" as const,
-    highlight: true,
   },
   {
     id: "controls-panel",
     title: "Control Panel",
     description:
-      "Here you'll find all the main controls for the simulation. You can adjust speed, pause the animation, reset the view, and start tours.",
+      "Here you'll find all the main controls. You can adjust simulation speed, pause the animation, reset the view, and toggle orbit visibility.",
     target: "#controls",
     position: "left" as const,
     highlight: true,
@@ -30,23 +20,16 @@ export const solarSystemTourSteps = [
     id: "speed-control",
     title: "Simulation Speed",
     description:
-      "Use this slider to control how fast the planets orbit around the Sun. Slide left to slow down, right to speed up the simulation.",
+      "Use this slider to control how fast the planets orbit around the Sun. You can slow it down to observe details or speed it up to see long-term orbital patterns.",
     target: "#speed-slider",
     position: "left" as const,
     highlight: true,
-    action: () => {
-      const slider = document.getElementById("speed-slider") as HTMLInputElement
-      if (slider) {
-        slider.value = "0.5"
-        slider.dispatchEvent(new Event("input", { bubbles: true }))
-      }
-    },
   },
   {
     id: "pause-button",
-    title: "Pause & Resume",
+    title: "Pause Animation",
     description:
-      "Click this button to pause or resume the planetary motion. Great for taking a closer look at specific objects or their positions.",
+      "Click this button to pause or resume the planetary motion. This is useful when you want to examine objects without them moving.",
     target: "#pause-button",
     position: "left" as const,
     highlight: true,
@@ -55,101 +38,76 @@ export const solarSystemTourSteps = [
     id: "reset-view",
     title: "Reset Camera View",
     description:
-      "Lost in space? Click this button to return to the default camera position and get a perfect overview of the entire solar system.",
+      "If you get lost navigating around the solar system, click this button to return to the default camera position and view.",
     target: "#reset-view",
     position: "left" as const,
     highlight: true,
   },
   {
     id: "toggle-orbits",
-    title: "Show/Hide Orbits",
+    title: "Toggle Orbit Lines",
     description:
-      "Toggle the visibility of orbital paths. Hide them for a cleaner view, or show them to better understand planetary movements.",
+      "This button shows or hides the orbital paths of the planets. The blue rings help you visualize the planetary orbits.",
     target: "#toggle-orbits",
     position: "left" as const,
     highlight: true,
-    action: () => {
-      const button = document.getElementById("toggle-orbits")
-      if (button) {
-        button.click()
-        setTimeout(() => button.click(), 1500) // Show them again
-      }
-    },
   },
   {
-    id: "planet-tour",
-    title: "Guided Planet Tour",
+    id: "guided-tour",
+    title: "Guided Tour",
     description:
-      "Start an automated tour that will take you to visit each planet, moon, and celestial object with detailed information about each one.",
+      "This button starts a comprehensive tour that visits every planet, moon, and major feature in the solar system with detailed information.",
     target: "#start-tour",
     position: "left" as const,
     highlight: true,
   },
   {
-    id: "vr-experience",
+    id: "vr-mode",
     title: "Virtual Reality",
     description:
-      "If you have a VR headset, click here to experience the solar system in immersive virtual reality! (Requires WebXR compatible device)",
+      "If you have a VR headset, click this button to experience the solar system in immersive virtual reality. Note that VR mode may not be available on all devices.",
     target: "#vr-button",
     position: "top" as const,
     highlight: true,
   },
   {
-    id: "interaction",
-    title: "Interactive Objects",
-    description:
-      "Click on any planet, moon, or celestial object to learn more about it. An information panel will appear with fascinating details!",
-    position: "center" as const,
-    highlight: false,
-    action: () => {
-      // Simulate clicking on Earth
-      const earthClickEvent = new MouseEvent("click", {
-        clientX: window.innerWidth * 0.4,
-        clientY: window.innerHeight * 0.5,
-        bubbles: true,
-      })
-      window.dispatchEvent(earthClickEvent)
-    },
-  },
-  {
     id: "info-panel",
     title: "Information Panel",
     description:
-      "When you click on objects, detailed information appears here. Learn about each planet's characteristics, moons, and interesting facts.",
+      "When you click on any planet or moon, detailed information appears here. This panel shows the name and fascinating facts about the selected object.",
     target: "#info",
     position: "right" as const,
     highlight: true,
-    delay: 1000,
   },
   {
     id: "navigation",
     title: "Camera Navigation",
     description:
-      "Use your mouse to navigate: Left-click and drag to rotate the view, scroll to zoom in/out, and right-click and drag to pan around.",
+      "You can navigate around the solar system by clicking and dragging to rotate the view, scrolling to zoom in/out, and right-clicking and dragging to pan.",
     position: "center" as const,
     highlight: false,
   },
   {
-    id: "objects-overview",
-    title: "What You Can Explore",
+    id: "interaction",
+    title: "Object Interaction",
     description:
-      "Our solar system includes: 8 planets, 5 dwarf planets (including Pluto), over 80 moons, the asteroid belt, and the distant Oort Cloud!",
+      "Click on any planet, moon, or celestial object to learn more about it. The information will appear in the bottom-left panel with detailed facts and descriptions.",
     position: "center" as const,
     highlight: false,
   },
   {
-    id: "mobile-friendly",
-    title: "Mobile & Touch Support",
+    id: "features",
+    title: "Special Features",
     description:
-      "This experience works great on mobile devices too! Use touch gestures to navigate and explore the solar system on your phone or tablet.",
+      "The solar system includes all planets, major moons, dwarf planets like Pluto and Ceres, the asteroid belt, and even the distant Oort Cloud at the edge of our solar system.",
     position: "center" as const,
     highlight: false,
   },
   {
-    id: "completion",
+    id: "complete",
     title: "Tour Complete!",
     description:
-      "Congratulations! You're now ready to explore the solar system. Remember, you can restart this tour anytime from the help button. Enjoy your cosmic journey!",
+      "You're now ready to explore the solar system! Try clicking on different objects, adjusting the speed, or starting the comprehensive guided tour for a detailed journey through space.",
     position: "center" as const,
     highlight: false,
   },

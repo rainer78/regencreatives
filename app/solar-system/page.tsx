@@ -461,7 +461,7 @@ export default function SolarSystemPage() {
         <button id="retry-button">🔄 Try Again</button>
     </div>
     
-    <div id="title">Solar System Explorer</div>
+    <div id="title">🌌 Solar System Explorer</div>
     
     <div id="info">
         <h3 id="planet-name">Select an Object</h3>
@@ -474,19 +474,19 @@ export default function SolarSystemPage() {
             <input type="range" id="speed-slider" min="0" max="1" step="0.1" value="1" aria-label="Simulation speed control">
         </div>
         <button id="reset-view" class="tooltip" aria-label="Reset camera to default position">
-            Reset View
+            🏠 Reset View
             <span class="tooltiptext">Return to default camera position</span>
         </button>
         <button id="toggle-orbits" class="tooltip" aria-label="Toggle orbit visibility">
-             Hide Orbits
+            👁️ Hide Orbits
             <span class="tooltiptext">Toggle orbit lines visibility</span>
         </button>
         <button id="pause-button" class="tooltip" aria-label="Pause or resume animation">
-             Pause
+            ⏸️ Pause
             <span class="tooltiptext">Pause/resume planet movement</span>
         </button>
         <button id="start-tour" class="tooltip" aria-label="Start guided tour">
-             Guided Tour
+            🎯 Guided Tour
             <span class="tooltiptext">Begin an interactive tour of the Solar System</span>
         </button>
     </div>
@@ -496,7 +496,7 @@ export default function SolarSystemPage() {
         <div id="tour-description">Embark on an incredible journey through our Solar System. Click Next to begin your cosmic adventure!</div>
         <div id="tour-controls">
             <button id="tour-prev" class="tour-button tooltip" disabled aria-label="Previous tour stop">
-                 Previous
+                ⬅️ Previous
                 <span class="tooltiptext">Go to previous location</span>
             </button>
             <button id="tour-next" class="tour-button tooltip" aria-label="Next tour stop">
@@ -504,7 +504,7 @@ export default function SolarSystemPage() {
                 <span class="tooltiptext">Go to next location</span>
             </button>
             <button id="tour-exit" class="tour-button tooltip" aria-label="Exit tour">
-                 Exit Tour
+                ❌ Exit Tour
                 <span class="tooltiptext">End the guided tour</span>
             </button>
         </div>
@@ -1070,7 +1070,7 @@ export default function SolarSystemPage() {
                 window.addEventListener('resize', function() {
                     camera.aspect = window.innerWidth / window.innerHeight;
                     camera.updateProjectionMatrix();
-                    renderer.setSize(window.innerWidth / window.innerHeight);
+                    renderer.setSize(window.innerWidth, window.innerHeight);
                 });
                 
                 // Animation speeds
