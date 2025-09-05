@@ -9,7 +9,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://raw.githubusercontent.com/RegenCreatives/test-repo/refs/heads/master/Your%20website%20is%20a%20couch%20potato.mp4?height=800&width=1200')] bg-cover bg-center opacity-20"></div>
+        <div className="absolute inset-0 bg-[url('https://raw.githubusercontent.com/RegenCreatives/test-repo/refs/heads/master/sse_hero_static..png?height=800&width=1200')] bg-cover bg-center opacity-20"></div>
         <div className="relative container mx-auto px-4 py-20 text-center">
           <div className="max-w-4xl mx-auto">
             <Badge variant="secondary" className="mb-6 bg-purple-100 text-purple-800">
