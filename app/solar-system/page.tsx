@@ -229,6 +229,100 @@ export default function SolarSystemPage() {
             width: 20px;
             height: 20px;
         }
+
+        #fullscreen-button {
+            background-color: #34a853;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease;
+            margin-top: 10px;
+        }
+
+        #fullscreen-button:hover {
+            background-color: #2d8f47;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        #fullscreen-button svg {
+            margin-right: 8px;
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Fullscreen API styles */
+        :-webkit-full-screen {
+            background-color: #000;
+        }
+
+        :-moz-full-screen {
+            background-color: #000;
+        }
+
+        :fullscreen {
+            background-color: #000;
+        }
+
+        :-webkit-full-screen #controls {
+            top: 10px;
+            right: 10px;
+            z-index: 10001;
+        }
+
+        :-webkit-full-screen #info {
+            bottom: 10px;
+            left: 10px;
+            z-index: 10001;
+        }
+
+        :-webkit-full-screen #title {
+            z-index: 10001;
+        }
+
+        :-webkit-full-screen #tour-container {
+            z-index: 10001;
+        }
+
+        :-webkit-full-screen #vr-container {
+            z-index: 10001;
+        }
+
+        :-moz-full-screen #controls,
+        :fullscreen #controls {
+            top: 10px;
+            right: 10px;
+            z-index: 10001;
+        }
+
+        :-moz-full-screen #info,
+        :fullscreen #info {
+            bottom: 10px;
+            left: 10px;
+            z-index: 10001;
+        }
+
+        :-moz-full-screen #title,
+        :fullscreen #title {
+            z-index: 10001;
+        }
+
+        :-moz-full-screen #tour-container,
+        :fullscreen #tour-container {
+            z-index: 10001;
+        }
+
+        :-moz-full-screen #vr-container,
+        :fullscreen #vr-container {
+            z-index: 10001;
+        }
         
         #vr-status {
             color: white;
@@ -528,6 +622,13 @@ export default function SolarSystemPage() {
             🥽 Enter VR
             <span class="tooltiptext">Experience in virtual reality</span>
         </button>
+        <button id="fullscreen-button" class="tooltip" aria-label="Enter fullscreen mode">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+            </svg>
+            📺 Fullscreen
+            <span class="tooltiptext">Enter fullscreen mode</span>
+        </button>
         <div id="vr-status"></div>
     </div>
     
@@ -621,7 +722,116 @@ export default function SolarSystemPage() {
                 showError('Failed to load required libraries: ' + error.message);
               });
         }
+
+        // HTML5 Fullscreen API Setup
+        const fullscreenButton = document.getElementById('fullscreen-button');
+        let isFullscreen = false;
+
+        // Check if fullscreen is supported
+        if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled) {
+            fullscreenButton.addEventListener('click', toggleFullscreen);
+        } else {
+            fullscreenButton.innerHTML = '🚫 Fullscreen Not Supported';
+            fullscreenButton.disabled = true;
+            fullscreenButton.style.opacity = "0.5";
+        }
+
+        function toggleFullscreen() {
+            if (!isFullscreen) {
+                // Enter fullscreen
+                const element = document.documentElement;
+                
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.webkitRequestFullscreen) {
+                    element.webkitRequestFullscreen();
+                } else if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();
+                } else if (element.msRequestFullscreen) {
+                    element.msRequestFullscreen();
+                }
+            } else {
+                // Exit fullscreen
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+
+        // Listen for fullscreen changes
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+        document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+        document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+        function handleFullscreenChange() {
+            isFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement || 
+                             document.mozFullScreenElement || document.msFullscreenElement);
+            
+            if (isFullscreen) {
+                fullscreenButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>📱 Exit Fullscreen';
+                fullscreenButton.querySelector('.tooltiptext').textContent = 'Exit fullscreen mode';
+                
+                // Ensure renderer fills the screen in fullscreen
+                if (typeof camera !== 'undefined' && typeof renderer !== 'undefined') {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                }
+                
+                console.log('📺 Entered fullscreen mode');
+            } else {
+                fullscreenButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>📺 Fullscreen';
+                fullscreenButton.querySelector('.tooltiptext').textContent = 'Enter fullscreen mode';
+
+                // Restore normal size
+                if (typeof camera !== 'undefined' && typeof renderer !== 'undefined') {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                }
+
+                console.log('🖥️ Exited fullscreen mode');
+            }
+        }
         
+        // If WebGL is not supported, show error
+        if (!isWebGLSupported()) {
+            showError('WebGL is not supported on this device');
+        } else {
+            // Load scripts sequentially so OrbitControls runs **after** Three.js
+            loadScriptWithValidation(
+              'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js',
+              'Three.js'
+            )
+              .then(() =>
+                Promise.all([
+                  loadScriptWithValidation(
+                    'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js',
+                    'OrbitControls'
+                  ),
+                  loadScriptWithValidation(
+                    'https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.min.js',
+                    'TWEEN.js'
+                  ),
+                ])
+              )
+              .then(() => {
+                console.log('✅ All scripts loaded in proper order');
+                initSolarSystem();
+              })
+              .catch((error) => {
+                console.error('❌ Script loading failed:', error);
+                showError('Failed to load required libraries: ' + error.message);
+              });
+        }
+
         function initSolarSystem() {
             try {
                 console.log('🚀 Initializing Solar System...');
@@ -635,7 +845,7 @@ export default function SolarSystemPage() {
                     { name: "Mars", radius: 0.8, color: 0xdd5500, distance: 25, info: "Mars is known as the Red Planet due to iron oxide (rust) on its surface. It has polar ice caps, seasons, and evidence of ancient water." },
                     { name: "Jupiter", radius: 2, color: 0xd9ad7c, distance: 35, info: "Jupiter is the largest planet in our Solar System. This gas giant has a strong magnetic field and acts as a cosmic vacuum cleaner, protecting inner planets." },
                     { name: "Saturn", radius: 1.8, color: 0xe6c278, distance: 45, info: "Saturn is famous for its spectacular ring system made of ice and rock particles. It's less dense than water and has over 80 moons." },
-                    { name: "Uranus", radius: 1.4, color: 0x75b8ff, distance: 55, info: "Uranus rotates on its side, likely due to a massive collision in its past. This ice giant has a blue-green color due to methane in its atmosphere." },
+                    { name: "Uranus", radius: 1.4, color: 0x75b8ff, distance: 55, info: "Uranus rotates on its side, likely due to a massive collision in its past. It's an ice giant with a blue-green color due to methane in its atmosphere." },
                     { name: "Neptune", radius: 1.4, color: 0x3c5dff, distance: 65, info: "Neptune is the farthest planet from the Sun and has the strongest winds in the Solar System, reaching speeds of over 1,200 mph." },
                     { name: "Pluto", radius: 0.4, color: 0xd3bc8d, distance: 75, info: "Pluto is a dwarf planet in the Kuiper Belt. Once considered the ninth planet, it has a heart-shaped region called Tombaugh Regio." },
                     { name: "Ceres", radius: 0.3, color: 0x8a8a8a, distance: 30, info: "Ceres is the largest object in the asteroid belt and the only dwarf planet in the inner Solar System. It contains significant amounts of water ice." },
@@ -1465,14 +1675,14 @@ export default function SolarSystemPage() {
                         isPaused ? 'Resume planet movement' : 'Pause planet movement';
                     
                     // Restore camera position
-                    const originalX = Number.parseFloat(tourContainer.dataset.originalX);
-                    const originalY = Number.parseFloat(tourContainer.dataset.originalY);
-                    const originalZ = Number.parseFloat(tourContainer.dataset.originalZ);
+                    const originalX = parseFloat(tourContainer.dataset.originalX);
+                    const originalY = parseFloat(tourContainer.dataset.originalY);
+                    const originalZ = parseFloat(tourContainer.dataset.originalZ);
                     
                     // Restore controls target
-                    const originalTargetX = Number.parseFloat(tourContainer.dataset.originalTargetX || 0);
-                    const originalTargetY = Number.parseFloat(tourContainer.dataset.originalTargetY || 0);
-                    const originalTargetZ = Number.parseFloat(tourContainer.dataset.originalTargetZ || 0);
+                    const originalTargetX = parseFloat(tourContainer.dataset.originalTargetX || 0);
+                    const originalTargetY = parseFloat(tourContainer.dataset.originalTargetY || 0);
+                    const originalTargetZ = parseFloat(tourContainer.dataset.originalTargetZ || 0);
                     
                     if (window.TWEEN) {
                         new TWEEN.Tween(camera.position)
@@ -1548,87 +1758,6 @@ export default function SolarSystemPage() {
                 // Hide loading screen
                 document.getElementById('loading').style.display = 'none';
                 
-                // VR session event handlers
-                renderer.xr.addEventListener('sessionstart', () => {
-                    isInVR = true;
-                    
-                    // Hide desktop UI elements
-                    document.getElementById('controls').style.display = 'none';
-                    document.getElementById('title').style.display = 'none';
-                    document.getElementById('info').style.display = 'none';
-                    document.getElementById('vr-container').style.display = 'none';
-                    document.getElementById('tour-container').style.display = 'none';
-                    
-                    // Setup VR controllers and UI
-                    setupVRControllers();
-                    
-                    // Create VR UI panels
-                    vrInfoPanel = createVRInfoPanel();
-                    vrTourPanel = createVRTourPanel();
-                    scene.add(vrInfoPanel);
-                    scene.add(vrTourPanel);
-                    
-                    // Initialize VR tour panel
-                    vrTourPanel.updateContent("Guided Tour", "Point at objects to learn about them, or start a guided tour of the Solar System.", "", false);
-                    vrTourPanel.visible = true;
-                    
-                    console.log('🥽 VR session started - VR UI enabled');
-                });
-                
-                renderer.xr.addEventListener('sessionend', () => {
-                    isInVR = false;
-                    
-                    // Show desktop UI elements
-                    document.getElementById('controls').style.display = 'block';
-                    document.getElementById('title').style.display = 'block';
-                    document.getElementById('vr-container').style.display = 'block';
-                    
-                    // Only show tour container if tour is active
-                    if (tourActive) {
-                        document.getElementById('tour-container').style.display = 'block';
-                    }
-                    
-                    // Remove VR UI panels
-                    if (vrInfoPanel) {
-                        scene.remove(vrInfoPanel);
-                        vrInfoPanel = null;
-                    }
-                    if (vrTourPanel) {
-                        scene.remove(vrTourPanel);
-                        vrTourPanel = null;
-                    }
-                    
-                    // Remove VR controllers
-                    vrControllers.forEach(controller => {
-                        scene.remove(controller);
-                    });
-                    vrControllers = [];
-                    
-                    console.log('🖥️ VR session ended - Desktop UI restored');
-                });
-                
-                // Add keyboard navigation for tour
-                window.addEventListener('keydown', (event) => {
-                    if (tourActive && !isInVR) {
-                        if (event.key === 'ArrowRight' || event.key === 'ArrowDown' || event.key === ' ') {
-                            // Next stop
-                            if (currentTourStop < tourStops.length - 1) {
-                                currentTourStop++;
-                                goToTourStop(currentTourStop);
-                            }
-                        } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
-                            // Previous stop
-                            if (currentTourStop > 0) {
-                                currentTourStop--;
-                                goToTourStop(currentTourStop);
-                            }
-                        } else if (event.key === 'Escape') {
-                            // Exit tour
-                            endTour();
-                        }
-                    }
-                });
-                
                 // Mark initialization as complete
                 testResults.initializationComplete = true;
                 console.log('✅ Solar System initialization complete');
@@ -1640,317 +1769,6 @@ export default function SolarSystemPage() {
                 showError('Initialization failed: ' + error.message);
             }
         }
-
-        // Setup VR controllers with proper WebXR API
-        function setupVRControllers() {
-            // Get controllers from WebXR session
-            const controller1 = renderer.xr.getController(0);
-            const controller2 = renderer.xr.getController(1);
-            
-            // Create controller grips for hand models
-            const controllerGrip1 = renderer.xr.getControllerGrip(0);
-            const controllerGrip2 = renderer.xr.getControllerGrip(1);
-            
-            // Add controller models if available
-            if (window.THREE.XRControllerModelFactory) {
-                const controllerModelFactory = new THREE.XRControllerModelFactory();
-                controllerGrip1.add(controllerModelFactory.createControllerModel(controllerGrip1));
-                controllerGrip2.add(controllerModelFactory.createControllerModel(controllerGrip2));
-            }
-            
-            // Add controllers to scene
-            scene.add(controller1);
-            scene.add(controller2);
-            scene.add(controllerGrip1);
-            scene.add(controllerGrip2);
-            
-            // Add ray visualization for pointing
-            const geometry = new THREE.BufferGeometry().setFromPoints([
-                new THREE.Vector3(0, 0, 0),
-                new THREE.Vector3(0, 0, -1)
-            ]);
-            const material = new THREE.LineBasicMaterial({ color: 0x4285f4 });
-            const line = new THREE.Line(geometry, material);
-            line.name = 'line';
-            line.scale.z = 5;
-            
-            controller1.add(line.clone());
-            controller2.add(line.clone());
-            
-            // Controller event listeners for WebXR
-            controller1.addEventListener('selectstart', onVRSelect);
-            controller2.addEventListener('selectstart', onVRSelect);
-            controller1.addEventListener('selectend', onVRSelectEnd);
-            controller2.addEventListener('selectend', onVRSelectEnd);
-            
-            vrControllers = [controller1, controller2, controllerGrip1, controllerGrip2];
-            
-            console.log('🎮 VR controllers setup complete');
-        }
-
-        function onVRSelect(event) {
-            const controller = event.target;
-            const raycaster = new THREE.Raycaster();
-            
-            // Set raycaster from controller
-            const tempMatrix = new THREE.Matrix4();
-            tempMatrix.identity().extractRotation(controller.matrixWorld);
-            raycaster.ray.origin.setFromMatrixPosition(controller.matrixWorld);
-            raycaster.ray.direction.set(0, 0, -1).applyMatrix4(tempMatrix);
-            
-            // Check for intersections with planets and moons
-            const intersects = raycaster.intersectObjects(scene.children, true);
-            
-            if (intersects.length > 0) {
-                let clickedObject = null;
-                let clickedInfo = null;
-                
-                // Check if it's a planet
-                for (let i = 0; i < planets.length; i++) {
-                    if (intersects[0].object === planets[i].object) {
-                        clickedObject = planets[i].data.name;
-                        clickedInfo = planets[i].data.info;
-                        break;
-                    }
-                }
-                
-                // Check if it's a moon
-                if (!clickedObject && intersects[0].object.userData && intersects[0].object.userData.isMoon) {
-                    clickedObject = intersects[0].object.userData.name;
-                    clickedInfo = intersects[0].object.userData.info;
-                }
-                
-                // Check VR UI buttons
-                if (!clickedObject && intersects[0].object.userData && intersects[0].object.userData.action) {
-                    const action = intersects[0].object.userData.action;
-                    handleVRTourAction(action);
-                    return;
-                }
-                
-                if (clickedObject && vrInfoPanel) {
-                    vrInfoPanel.updateContent(clickedObject, clickedInfo);
-                    vrInfoPanel.visible = true;
-                }
-            }
-        }
-
-        function onVRSelectEnd(event) {
-            // Handle select end if needed
-        }
-
-        function handleVRTourAction(action) {
-            switch (action) {
-                case 'tour-start':
-                    startTour();
-                    break;
-                case 'tour-prev':
-                    if (currentTourStop > 0) {
-                        currentTourStop--;
-                        goToTourStop(currentTourStop);
-                    }
-                    break;
-                case 'tour-next':
-                    if (currentTourStop < tourStops.length - 1) {
-                        currentTourStop++;
-                        goToTourStop(currentTourStop);
-                    }
-                    break;
-                case 'tour-exit':
-                    endTour();
-                    break;
-            }
-        }
-
-        // Create VR UI panels
-        function createVRInfoPanel() {
-            const panelGeometry = new THREE.PlaneGeometry(2, 1);
-            const canvas = document.createElement('canvas');
-            canvas.width = 512;
-            canvas.height = 256;
-            const context = canvas.getContext('2d');
-            
-            // Create texture from canvas
-            const texture = new THREE.CanvasTexture(canvas);
-            const material = new THREE.MeshBasicMaterial({ 
-                map: texture, 
-                transparent: true,
-                opacity: 0.9
-            });
-            
-            const panel = new THREE.Mesh(panelGeometry, material);
-            panel.position.set(-3, 1.5, -2);
-            panel.visible = false;
-            
-            // Function to update panel content
-            panel.updateContent = function(title, info) {
-                context.clearRect(0, 0, canvas.width, canvas.height);
-                
-                // Background
-                context.fillStyle = 'rgba(0, 0, 0, 0.8)';
-                context.fillRect(0, 0, canvas.width, canvas.height);
-                
-                // Border
-                context.strokeStyle = '#4285f4';
-                context.lineWidth = 4;
-                context.strokeRect(0, 0, canvas.width, canvas.height);
-                
-                // Title
-                context.fillStyle = '#4285f4';
-                context.font = 'bold 32px Arial';
-                context.textAlign = 'center';
-                context.fillText(title, canvas.width / 2, 50);
-                
-                // Info text
-                context.fillStyle = 'white';
-                context.font = '18px Arial';
-                context.textAlign = 'left';
-                
-                // Word wrap
-                const words = info.split(' ');
-                let line = '';
-                let y = 90;
-                const maxWidth = canvas.width - 40;
-                
-                for (let n = 0; n < words.length; n++) {
-                    const testLine = line + words[n] + ' ';
-                    const metrics = context.measureText(testLine);
-                    const testWidth = metrics.width;
-                    
-                    if (testWidth > maxWidth && n > 0) {
-                        context.fillText(line, 20, y);
-                        line = words[n] + ' ';
-                        y += 25;
-                    } else {
-                        line = testLine;
-                    }
-                }
-                context.fillText(line, 20, y);
-                
-                texture.needsUpdate = true;
-            };
-            
-            return panel;
-        }
-        
-        function createVRTourPanel() {
-            const panelGeometry = new THREE.PlaneGeometry(3, 2);
-            const canvas = document.createElement('canvas');
-            canvas.width = 768;
-            canvas.height = 512;
-            const context = canvas.getContext('2d');
-            
-            const texture = new THREE.CanvasTexture(canvas);
-            const material = new THREE.MeshBasicMaterial({ 
-                map: texture, 
-                transparent: true,
-                opacity: 0.9
-            });
-            
-            const panel = new THREE.Mesh(panelGeometry, material);
-            panel.position.set(3, 1.5, -2);
-            panel.visible = false;
-            
-            // Create interactive buttons
-            const buttonGeometry = new THREE.BoxGeometry(0.3, 0.1, 0.05);
-            const buttonMaterial = new THREE.MeshBasicMaterial({ color: 0x4285f4 });
-            
-            const prevButton = new THREE.Mesh(buttonGeometry, buttonMaterial);
-            prevButton.position.set(2.2, 0.3, -1.95);
-            prevButton.userData = { action: 'tour-prev' };
-            
-            const nextButton = new THREE.Mesh(buttonGeometry, buttonMaterial);
-            nextButton.position.set(3.8, 0.3, -1.95);
-            nextButton.userData = { action: 'tour-next' };
-            
-            const exitButton = new THREE.Mesh(buttonGeometry, buttonMaterial.clone());
-            exitButton.material.color.setHex(0xff4444);
-            exitButton.position.set(3, 0.1, -1.95);
-            exitButton.userData = { action: 'tour-exit' };
-            
-            const startButton = new THREE.Mesh(buttonGeometry, buttonMaterial.clone());
-            startButton.material.color.setHex(0x44ff44);
-            startButton.position.set(3, 0.5, -1.95);
-            startButton.userData = { action: 'tour-start' };
-            
-            panel.add(prevButton);
-            panel.add(nextButton);
-            panel.add(exitButton);
-            panel.add(startButton);
-            
-            panel.updateContent = function(title, description, progress, isActive) {
-                context.clearRect(0, 0, canvas.width, canvas.height);
-                
-                // Background
-                context.fillStyle = 'rgba(0, 0, 0, 0.8)';
-                context.fillRect(0, 0, canvas.width, canvas.height);
-                
-                // Border
-                context.strokeStyle = '#4285f4';
-                context.lineWidth = 4;
-                context.strokeRect(0, 0, canvas.width, canvas.height);
-                
-                // Title
-                context.fillStyle = '#4285f4';
-                context.font = 'bold 28px Arial';
-                context.textAlign = 'center';
-                context.fillText(title, canvas.width / 2, 50);
-                
-                // Description
-                context.fillStyle = 'white';
-                context.font = '16px Arial';
-                context.textAlign = 'left';
-                
-                // Word wrap for description
-                const words = description.split(' ');
-                let line = '';
-                let y = 90;
-                const maxWidth = canvas.width - 40;
-                
-                for (let n = 0; n < words.length; n++) {
-                    const testLine = line + words[n] + ' ';
-                    const metrics = context.measureText(testLine);
-                    const testWidth = metrics.width;
-                    
-                    if (testWidth > maxWidth && n > 0) {
-                        context.fillText(line, 20, y);
-                        line = words[n] + ' ';
-                        y += 20;
-                    } else {
-                        line = testLine;
-                    }
-                }
-                context.fillText(line, 20, y);
-                
-                // Progress
-                context.fillStyle = '#ccc';
-                context.font = '14px Arial';
-                context.textAlign = 'center';
-                context.fillText(progress, canvas.width / 2, canvas.height - 80);
-                
-                // Button labels
-                context.fillStyle = 'white';
-                context.font = '12px Arial';
-                context.textAlign = 'center';
-                
-                if (isActive) {
-                    context.fillText('← Previous', 170, canvas.height - 40);
-                    context.fillText('Next →', canvas.width - 170, canvas.height - 40);
-                    context.fillText('Exit Tour', canvas.width / 2, canvas.height - 60);
-                } else {
-                    context.fillText('Start Tour', canvas.width / 2, canvas.height - 30);
-                }
-                
-                // Update button visibility
-                prevButton.visible = isActive;
-                nextButton.visible = isActive;
-                exitButton.visible = isActive;
-                startButton.visible = !isActive;
-                
-                texture.needsUpdate = true;
-            };
-            
-            return panel;
-        }
     </script>
 </body>
 </html>
@@ -1961,7 +1779,7 @@ export default function SolarSystemPage() {
     document.write(htmlContent)
     document.close()
 
-    console.log("🚀 Solar System Explorer loaded successfully with VR tour support")
+    console.log("🚀 Solar System Explorer loaded successfully with VR tour support and fullscreen functionality")
   }, [])
 
   return (
