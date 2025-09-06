@@ -22,6 +22,18 @@ export default function SolarSystemPage() {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMDAwNTEwIiByeD0iNCIvPgo8Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIzIiBmaWxsPSIjRkZERDAwIi8+CjxjaXJjbGUgY3g9IjgiIGN5PSIxMiIgcj0iMSIgZmlsbD0iI0E1QTVBNSIvPgo8Y2lyY2xlIGN4PSIxMCIgY3k9IjE4IiByPSIxLjIiIGZpbGw9IiNFMzlCNEYiLz4KPGNpcmNsZSBjeD0iMjIiIGN5PSIxMCIgcj0iMS4zIiBmaWxsPSIjMjIzM0ZGIi8+CjxjaXJjbGUgY3g9IjI0IiBjeT0iMjAiIHI9IjEuMSIgZmlsbD0iI0RENTA1MDAiLz4KPGNpcmNsZSBjeD0iNiIgY3k9IjIyIiByPSIwLjgiIGZpbGw9IiNEOUFEN0MiLz4KPGNpcmNsZSBjeD0iMjYiIGN5PSIxNCIgcj0iMC43IiBmaWxsPSIjRTZDMjc4Ii8+CjxjaXJjbGUgY3g9IjQiIGN5PSI4IiByPSIwLjUiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuOCIvPgo8Y2lyY2xlIGN4PSIyOCIgY3k9IjI0IiByPSIwLjUiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuNiIvPgo8Y2lyY2xlIGN4PSIxMiIgY3k9IjYiIHI9IjAuNCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC43Ii8+CjxjaXJjbGUgY3g9IjIwIiBjeT0iMjYiIHI9IjAuNCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC41Ii8+Cjwvc3ZnPgo=">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMDAwNTEwIiByeD0iMjAiLz4KPGN4cmNsZSBjeD0iOTAiIGN5PSI5MCIgcj0iMTgiIGZpbGw9IiNGRkREMDAiLz4KPGN4cmNsZSBjeD0iNDUiIGN5PSI2OCIgcj0iNiIgZmlsbD0iI0E1QTVBNSIvPgo8Y2lyY2xlIGN4PSI1NiIgY3k9IjEwMiIgcj0iNy4yIiBmaWxsPSIjRTM5QjRGIi8+CjxjaXJjbGUgY3g9IjEyNCIgY3k9IjU2IiByPSI3LjgiIGZpbGw9IiMyMjMzRkYiLz4KPGN4cmNsZSBjeD0iMTM1IiBjeT0iMTEzIiByPSI2LjYiIGZpbGw9IiNERDU1MDAiLz4KPGN4cmNsZSBjeD0iMzQiIGN5PSIxMjQiIHI9IjQuOCIgZmlsbD0iI0Q5QUQ3QyIvPgo8Y2lyY2xlIGN4PSIxNDYiIGN5PSI3OSIgcj0iNC4yIiBmaWxsPSIjRTZDMjc4Ii8+CjxjaXJjbGUgY3g9IjIyIiBjeT0iNDUiIHI9IjMiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuOCIvPgo8Y2lyY2xlIGN4PSIxNTgiIGN5PSIxMzUiIHI9IjMiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuNiIvPgo8Y2lyY2xlIGN4PSI2OCIgY3k9IjM0IiByPSIyLjQiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuNyIvPgo8Y2lyY2xlIGN4PSIxMTMiIGN5PSIxNDYiIHI9IjIuNCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC41Ii8+CjxjaXJjbGUgY3g9IjE1NiIgY3k9IjIyIiByPSIyIiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjQiLz4KPGN4cmNsZSBjeD0iMjIiIGN5PSIxNTgiIHI9IjIiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuNCIvPgo8Y2lyY2xlIGN4PSIxMzUiIGN5PSIzNCIgcj0iMS44IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjMiLz4KPGN4cmNsZSBjeD0iNDUiIGN5PSIxNDYiIHI9IjEuOCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4zIi8+Cjwvc3ZnPgo=">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMDAwNTEwIiByeD0iNCIvPgo8Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIzIiBmaWxsPSIjRkZERDAwIi8+CjxjaXJjbGUgY3g9IjgiIGN5PSIxMiIgcj0iMSIgZmlsbD0iI0E1QTVBNSIvPgo8Y2lyY2xlIGN4PSIxMCIgY3k9IjE4IiByPSIxLjIiIGZpbGw9IiNFMzlCNEYiLz4KPGN4cmNsZSBjeD0iMjIiIGN5PSIxMCIgcj0iMS4zIiBmaWxsPSIjMjIzM0ZGIi8+CjxjaXJjbGUgY3g9IjI0IiBjeT0iMjAiIHI9IjEuMSIgZmlsbD0iI0RENTA1MDAiLz4KPGN4cmNsZSBjeD0iNiIgY3k9IjIyIiByPSIwLjgiIGZpbGw9IiNEOUFEN0MiLz4KPGN4cmNsZSBjeD0iMjYiIGN5PSIxNCIgcj0iMC43IiBmaWxsPSIjRTZDMjc4Ii8+CjxjaXJjbGUgY3g9IjQiIGN5PSI4IiByPSIwLjUiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuOCIvPgo8Y2lyY2xlIGN4PSIyOCIgY3k9IjI0IiByPSIwLjUiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuNiIvPgo8Y2lyY2xlIGN4PSIxMiIgY3k9IjYiIHI9IjAuNCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC43Ii8+CjxjaXJjbGUgY3g9IjIwIiBjeT0iMjYiIHI9IjAuNCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC41Ii8+Cjwvc3ZnPgo=">
+<link rel="icon" type="image/png" sizes="16x16" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2IiBmaWxsPSIjMDAwNTEwIiByeD0iMiIvPgo8Y2lyY2xlIGN4PSI4IiBjeT0iOCIgcj0iMS41IiBmaWxsPSIjRkZERDAwIi8+CjxjaXJjbGUgY3g9IjQiIGN5PSI2IiByPSIwLjUiIGZpbGw9IiNBNUE1QTUiLz4KPGN4cmNsZSBjeD0iNSIgY3k9IjkiIHI9IjAuNiIgZmlsbD0iI0UzOUI0RiIvPgo8Y2lyY2xlIGN4PSIxMSIgY3k9IjUiIHI9IjAuNjUiIGZpbGw9IiMyMjMzRkYiLz4KPGN4cmNsZSBjeD0iMTIiIGN5PSIxMCIgcj0iMC41NSIgZmlsbD0iI0RENTA1MDAiLz4KPGN4cmNsZSBjeD0iMyIgY3k9IjExIiByPSIwLjQiIGZpbGw9IiNEOUFEN0MiLz4KPGN4cmNsZSBjeD0iMTMiIGN5PSI3IiByPSIwLjM1IiBmaWxsPSIjRTZDMjc4Ii8+CjxjaXJjbGUgY3g9IjIiIGN5PSI0IiByPSIwLjI1IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjgiLz4KPGN4cmNsZSBjeD0iMTQiIGN5PSIxMiIgcj0iMC4yNSIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC42Ii8+CjxjaXJjbGUgY3g9IjYiIGN5PSIzIiByPSIwLjIiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuNyIvPgo8Y2lyY2xlIGN4PSIxMCIgY3k9IjEzIiByPSIwLjIiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuNSIvPgo8L3N2Zz4K">
+<link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlNvbGFyIFN5c3RlbSBFeHBsb3JlciIsCiAgInNob3J0X25hbWUiOiAiU29sYXIgU3lzdGVtIiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCM2FXUjBhRDBpTVRnd0lpQm9aV2xuYUhROUlqRTRNQ0lpSUhacFpYZENiM2c5SWpBZ01DQXhPREFnTVRnd0lpQm1hV3hzUFNKdWIyNWxJaUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lQZ29nUEhKbFkzUWdkMmxrZEdnOUlqRTRNQ0lpSUdobGFXZG9kRDBpTVRnd0lpQm1hV3hzUFNJak1EQXdOVEV3SWlCeWVEMGlNakFpTHo0S0lEeGphWEpqYkdVZ1kzZzlJamt3SWlCamVUMGlPVEFpSUhJOUlqRTRJaUJtYVd4c1BTSWpSa1pFUkRBd0lpOCtDaUE4WTJseVkyeGxJR040UFNJME5TSWdZM2s5SWpZNElpQnlQU0kySWlCbWFXeHNQU0lqUVRWQk5VRTFJaTgrQ2lBOFkybHlZMnhsSUdONFBTSTFOaUlnWTNrOUlqRXdNaUlnY2owaU55NHlJaUJtYVd4c1BTSWpSVE01UWpSR0lpOCtDaUE4WTJseVkyeGxJR040UFNJeE1qUWlJR041UFNJMk5pSWdjajBpTnk0NElpQm1hV3hzUFNJak1qSXpNMFpHSWk4K0NpQThZMmx5WTJ4bElHTjRQU0l4TXpVaUlHTjVQU0l4TVRNaUlISTlJalkuTmlJZ1ptbHNiRDBpSTBSRU5UVXdNQ0l2UGdvZ1BHTnBjbU5zWlNCamVEMGlNelFpSUdONVBTSXhNalFpSUhJOUlqUXVPQ0lnWm1sc2JEMGlJMFE1UVVRM1F5SXZQZ29nUEdOcGNtTnNaU0JqZUQwaU1UUTJJaUJqZVQwaU56a2lJSEk5SWpRdU1pSWdabWxzYkQwaUkwVTJRekk0T0NJdlBnb2dQR05wY21Oc1pTQmplRDBpTWpJaUlHTjVQU0kwTlNJZ2NqMGlNeUlnWm1sc2JEMGlJMFpHUmtaR1JpSWdiM0JoWTJsMGVUMGlNQzQ0SWk4K0NpQThZMmx5WTJ4bElHTjRQU0l4TlRnaUlHTjVQU0l4TXpVaUlISTlJak1pSUdacGJHeDBQU0lqUmtaR1JrWkdJaUJ2Y0dGamFYUjVQU0l3TGpZaUx6NEtJRHhqYVhKamJHVWdZM2c5SWpZNElpQmplVDBpTXpRaUlISTlJakl1TkNJZ1ptbHNiRDBpSTBaR1JrWkdSaUlnYjNCaFkybDBlVDBpTUM0M0lpOCtDaUE4WTJseVkyeGxJR040UFNJeE1UTWlJR041UFNJeE5EWWlJSEk5SWpJdU5DSWdabWxzYkQwaUkwWkdSa1pHUmlJZ2IzQmhZMmwwZVQwaU1DNDFJaTgrQ2lBOFkybHlZMnhsSUdONFBTSXhOVFlpSUdONVBTSXlNaUlnY2owaU1pSWdabWxzYkQwaUkwWkdSa1pHUmlJZ2IzQmhZMmwwZVQwaU1DNDBJaTgrQ2lBOFkybHlZMnhsSUdONFBTSXlNaUlnWTNrOUlqRTFPQ0lnY2owaU1pSWdabWxzYkQwaUkwWkdSa1pHUmlJZ2IzQmhZMmwwZVQwaU1DNDBJaTgrQ2lBOFkybHlZMnhsSUdONFBTSXhNelVpSUdONVBTSXpOQ0lnY2owaU1TNDRJaUJtYVd4c1BTSWpSa1pHUmtaR0lpQnZjR0ZqYVhSNVBTSXdMak1pTHo0S0lEeGphWEpqYkdVZ1kzZzlJalExSWlCamVUMGlNVFEySWlCeVBTSXhMamdpSUdacGJHeDBQU0lqUmtaR1JrWkdJaUJ2Y0dGamFYUjVQU0l3TGpNaUx6NEtQQzl6ZG1jK0NnPT0iLAogICAgICAic2l6ZXMiOiAiMTgweDEwOCIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9LAogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU16SWlJR2hsYVdkb2REMGlNeklpSUhacFpYZENiM2c5SWpBZ01DQXpNaUF6TWlJZ1ptbHNiRDBpYm05dVpTSWdlRzFzYm5NOUltaDBkSEE2THk5M2QzY3Vkek11YjNKbkx6SXdNREF2YzNabklqNEtJRHh5WldOMElIZHBaSFJvUFNJek1pSWdhR1ZwWjJoMFBTSXpNaUlnWm1sc2JEMGlJekF3TURVMU1EQWlJSEo0UFNJMElpOCtDaUE4WTJseVkyeGxJR040UFNJeE5pSWdZM2s5SWpFMklpQnlQU0l6SWlCbWFXeHNQU0lqUmtaRVJEQXdJaTgrQ2lBOFkybHlZMnhsSUdONFBTSTRJaUJqZVQwaU1USWlJSEk5SWpFaUlHWnBiR3c5SWlOQk5VRTFRVFVpTHo0S0lEeGphWEpqYkdVZ1kzZzlJakV3SWlCamVUMGlNVGdpSUhJOUlqRXVNaUlnWm1sc2JEMGlJMFV6T1VJMFJpSXZQZ29nUEdOcGNtTnNaU0JqZUQwaU1qSWlJR041UFNJeE1DSWdjajBpTVM0eklpQm1hV3hzUFNJak1qSXpNMFpHSWk4K0NpQThZMmx5WTJ4bElHTjRQU0l5TkNJZ1kzazlJakl3SWlCeVBTSXhMakVpSUdacGJHeDBQU0lqUkVRMU5UQXdNQ0l2UGdvZ1BHTnBjbU5zWlNCamVEMGlOaUlnWTNrOUlqSXlJaUJ5UFNJd0xqZ2lJR1pwYkd3OUlpTkVPVUZFTjBNaUx6NEtJRHhqYVhKamJHVWdZM2c5SWpJMklpQmplVDBpTVRRaUlISTlJakF1TnlJZ1ptbHNiRDBpSTBVMlF6STRPQ0l2UGdvZ1BHTnBjbU5zWlNCamVEMGlOQ0lnWTNrOUlqZ2lJSEk5SWpBdU5TSWdabWxzYkQwaUkwWkdSa1pHUmlJZ2IzQmhZMmwwZVQwaU1DNDRJaTgrQ2lBOFkybHlZMnhsSUdONFBTSXlPQ0lnWTNrOUlqSTBJaUJ5UFNJd0xqVWlJR1pwYkd3OUlpTkdSa1pHUmtZaUlHOXdZV05wZEhrOUlqQXVOaUl2UGdvZ1BHTnBjbU5zWlNCamVEMGlNVElpSUdONVBTSXhNaUlnY2owaU1DNDBJaUJtYVd4c1BTSWpSa1pHUmtaR0lpQnZjR0ZqYVhSNVBTSXdMalVpTHo0S1BDOXpkbWMrQ2c9PSIsCiAgICAgICJzaXplcyI6ICIzMngzMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9LAogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU1UWWlJR2hsYVdkb2REMGlNVFlpSUhacFpYZENiM2c5SWpBZ01DQXhOaUF4TmlJZ1ptbHNiRDBpYm05dVpTSWdlRzFzYm5NOUltaDBkSEE2THk5M2QzY3Vkek11YjNKbkx6SXdNREF2YzNabklqNEtJRHh5WldOMElIZHBaSFJvUFNJeE5pSWdhR1ZwWjJoMFBTSXhOaUlnWm1sc2JEMGlJekF3TURVMU1EQWlJSEo0UFNJeUlpOCtDaUE4WTJseVkyeGxJR040UFNJNElpQmplVDBpT0NJZ2NqMGlNUzQxSWlCbWFXeHNQU0lqUmtaRVJEQXdJaTgrQ2lBOFkybHlZMnhsSUdONFBTSTBJaUJqZVQwaU5pSWdjajBpTUM0MUlpQm1hV3hzUFNJalFUVkJOVUUxSWk4K0NpQThZMmx5WTJ4bElHTjRQU0kxSWlCamVUMGlPU0lnY2owaU1DNDJJaUJtYVd4c1BTSWpSVE01UWpSR0lpOCtDaUE4WTJseVkyeGxJR040UFNJeE1TSWdZM2s5SWpVaUlISTlJakF1TmpVaUlHWnBiR3c5SWlOeU1qTXpSa1lpTHo0S0lEeGphWEpqYkdVZ1kzZzlJakV5SWlCamVUMGlNVEFpSUhJOUlqQXVOVFVpSUdacGJHeDBQU0lqUkVRMU5UQXdNQ0l2UGdvZ1BHTnBjbU5zWlNCamVEMGlNeUlnWTNrOUlqRXhJaUJ5UFNJd0xqUWlJR1pwYkd3OUlpTkVPVUZFTjBNaUx6NEtJRHhqYVhKamJHVWdZM2c5SWpFeklpQmplVDBpTnlJZ2NqMGlNQzR6TlNJZ1ptbHNiRDBpSTBVMlF6STRPQ0l2UGdvZ1BHTnBjbU5zWlNCamVEMGlNaUlnWTNrOUlqUWlJSEk5SWpBdU1qVWlJR1pwYkd3OUlpTkdSa1pHUmtZaUlHOXdZV05wZEhrOUlqQXVPQ0l2UGdvZ1BHTnBjbU5zWlNCamVEMGlNVFFpSUdONVBTSXhNaUlnY2owaU1DNHlOU0lnWm1sc2JEMGlJMFpHUmtaR1JpSWdiM0JoWTJsMGVUMGlNQzQySWk4K0Nqd3ZjM1puUGdvPSIsCiAgICAgICJzaXplcyI6ICIxNngxNiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXSwKICAic3RhcnRfdXJsIjogIi8iLAogICJ0aGVtZV9jb2xvciI6ICIjMDAwNTEwIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMDAwNTEwIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIgp9">
+<meta name="theme-color" content="#000510">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Solar System">
+<meta name="application-name" content="Solar System Explorer">
+<meta name="msapplication-TileColor" content="#000510">
+<meta name="msapplication-config" content="data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPGJyb3dzZXJjb25maWc+CiAgPG1zYXBwbGljYXRpb24+CiAgICA8dGlsZSBjb2xvcj0iIzAwMDUxMCIvPgogIDwvbXNhcHBsaWNhdGlvbj4KPC9icm93c2VyY29uZmlnPg==">
   <title>Solar System Explorer - Interactive 3D Experience</title>
   <style>
         body {
@@ -196,14 +208,79 @@ export default function SolarSystemPage() {
             border: 2px solid white;
         }
         
-        #vr-container {
+        /* Nine-Dot Waffle Menu */
+        #waffle-container {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 100;
         }
         
-        #vr-button {
+        #waffle-button {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease;
+            border: 1px solid #4285f4;
+            backdrop-filter: blur(10px);
+        }
+        
+        #waffle-button:hover {
+            background-color: rgba(66, 133, 244, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+        
+        .waffle-icon {
+            width: 24px;
+            height: 24px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 2px;
+        }
+        
+        .waffle-dot {
+            width: 6px;
+            height: 6px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+        
+        #waffle-button:hover .waffle-dot {
+            background-color: #4285f4;
+            transform: scale(1.1);
+        }
+        
+        #waffle-menu {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 1px solid #4285f4;
+            border-radius: 8px;
+            padding: 15px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 200px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+        
+        #waffle-menu.show {
+            display: flex;
+        }
+        
+        .waffle-menu-item {
             background-color: #4285f4;
             color: white;
             border: none;
@@ -213,49 +290,31 @@ export default function SolarSystemPage() {
             cursor: pointer;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             transition: all 0.2s ease;
+            text-align: left;
         }
         
-        #vr-button:hover {
-            background-color: #3b78e7;
+        .waffle-menu-item:hover {
+            background-color: #5294ff;
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
         }
         
-        #vr-button svg {
+        .waffle-menu-item svg {
             margin-right: 8px;
             width: 20px;
             height: 20px;
+            flex-shrink: 0;
         }
-
-        #fullscreen-button {
+        
+        .waffle-menu-item.fullscreen {
             background-color: #34a853;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 12px 16px;
-            font-size: 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            transition: all 0.2s ease;
-            margin-top: 10px;
         }
-
-        #fullscreen-button:hover {
+        
+        .waffle-menu-item.fullscreen:hover {
             background-color: #2d8f47;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-        }
-
-        #fullscreen-button svg {
-            margin-right: 8px;
-            width: 20px;
-            height: 20px;
         }
 
         /* Fullscreen API styles */
@@ -291,7 +350,7 @@ export default function SolarSystemPage() {
             z-index: 10001;
         }
 
-        :-webkit-full-screen #vr-container {
+        :-webkit-full-screen #waffle-container {
             z-index: 10001;
         }
 
@@ -319,8 +378,8 @@ export default function SolarSystemPage() {
             z-index: 10001;
         }
 
-        :-moz-full-screen #vr-container,
-        :fullscreen #vr-container {
+        :-moz-full-screen #waffle-container,
+        :fullscreen #waffle-container {
             z-index: 10001;
         }
         
@@ -483,9 +542,13 @@ export default function SolarSystemPage() {
                 padding: 15px;
             }
             
-            #vr-container {
+            #waffle-container {
                 bottom: 10px;
                 right: 10px;
+            }
+            
+            #waffle-menu {
+                min-width: 180px;
             }
             
             button {
@@ -505,7 +568,7 @@ export default function SolarSystemPage() {
         
         /* High contrast mode support */
         @media (prefers-contrast: high) {
-            #controls, #info, #tour-container {
+            #controls, #info, #tour-container, #waffle-menu {
                 border: 2px solid white;
                 background-color: black;
             }
@@ -614,21 +677,37 @@ export default function SolarSystemPage() {
         <div id="tour-progress">Stop 0 of 24</div>
     </div>
     
-    <div id="vr-container">
-        <button id="vr-button" class="tooltip" aria-label="Enter virtual reality mode">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                <path d="M20.5 6c-2.61.7-5.67 1-8.5 1s-5.89-.3-8.5-1L3 8c1.86.5 4 .83 6 1v13h2v-6h2v6h2V9c2-.17 4.14-.5 6-1l-.5-2zM12 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/>
-            </svg>
-            🥽 Enter VR
-            <span class="tooltiptext">Experience in virtual reality</span>
+    <div id="waffle-container">
+        <button id="waffle-button" class="tooltip" aria-label="Open app menu">
+            <div class="waffle-icon">
+                <div class="waffle-dot"></div>
+                <div class="waffle-dot"></div>
+                <div class="waffle-dot"></div>
+                <div class="waffle-dot"></div>
+                <div class="waffle-dot"></div>
+                <div class="waffle-dot"></div>
+                <div class="waffle-dot"></div>
+                <div class="waffle-dot"></div>
+                <div class="waffle-dot"></div>
+            </div>
+            <span class="tooltiptext">Open app menu</span>
         </button>
-        <button id="fullscreen-button" class="tooltip" aria-label="Enter fullscreen mode">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
-            </svg>
-            📺 Fullscreen
-            <span class="tooltiptext">Enter fullscreen mode</span>
-        </button>
+        
+        <div id="waffle-menu">
+            <button id="vr-button" class="waffle-menu-item" aria-label="Enter virtual reality mode">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                    <path d="M20.5 6c-2.61.7-5.67 1-8.5 1s-5.89-.3-8.5-1L3 8c1.86.5 4 .83 6 1v13h2v-6h2v6h2V9c2-.17 4.14-.5 6-1l-.5-2zM12 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/>
+                </svg>
+                🥽 Enter VR
+            </button>
+            <button id="fullscreen-button" class="waffle-menu-item fullscreen" aria-label="Enter fullscreen mode">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                    <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+                </svg>
+                📺 Fullscreen
+            </button>
+        </div>
+        
         <div id="vr-status"></div>
     </div>
     
@@ -692,6 +771,31 @@ export default function SolarSystemPage() {
             location.reload();
         });
         
+        // Waffle menu functionality
+        const waffleButton = document.getElementById('waffle-button');
+        const waffleMenu = document.getElementById('waffle-menu');
+        let isWaffleMenuOpen = false;
+
+        waffleButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            isWaffleMenuOpen = !isWaffleMenuOpen;
+            waffleMenu.classList.toggle('show', isWaffleMenuOpen);
+        });
+
+        // Close waffle menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!waffleButton.contains(e.target) && !waffleMenu.contains(e.target)) {
+                isWaffleMenuOpen = false;
+                waffleMenu.classList.remove('show');
+            }
+        });
+
+        // Close waffle menu when clicking on menu items
+        waffleMenu.addEventListener('click', () => {
+            isWaffleMenuOpen = false;
+            waffleMenu.classList.remove('show');
+        });
+        
         // If WebGL is not supported, show error
         if (!isWebGLSupported()) {
             showError('WebGL is not supported on this device');
@@ -731,7 +835,7 @@ export default function SolarSystemPage() {
         if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled) {
             fullscreenButton.addEventListener('click', toggleFullscreen);
         } else {
-            fullscreenButton.innerHTML = '🚫 Fullscreen Not Supported';
+            fullscreenButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>🚫 Fullscreen Not Supported';
             fullscreenButton.disabled = true;
             fullscreenButton.style.opacity = "0.5";
         }
@@ -776,7 +880,6 @@ export default function SolarSystemPage() {
             
             if (isFullscreen) {
                 fullscreenButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>📱 Exit Fullscreen';
-                fullscreenButton.querySelector('.tooltiptext').textContent = 'Exit fullscreen mode';
                 
                 // Ensure renderer fills the screen in fullscreen
                 if (typeof camera !== 'undefined' && typeof renderer !== 'undefined') {
@@ -788,7 +891,6 @@ export default function SolarSystemPage() {
                 console.log('📺 Entered fullscreen mode');
             } else {
                 fullscreenButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>📺 Fullscreen';
-                fullscreenButton.querySelector('.tooltiptext').textContent = 'Enter fullscreen mode';
 
                 // Restore normal size
                 if (typeof camera !== 'undefined' && typeof renderer !== 'undefined') {
@@ -799,37 +901,6 @@ export default function SolarSystemPage() {
 
                 console.log('🖥️ Exited fullscreen mode');
             }
-        }
-        
-        // If WebGL is not supported, show error
-        if (!isWebGLSupported()) {
-            showError('WebGL is not supported on this device');
-        } else {
-            // Load scripts sequentially so OrbitControls runs **after** Three.js
-            loadScriptWithValidation(
-              'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js',
-              'Three.js'
-            )
-              .then(() =>
-                Promise.all([
-                  loadScriptWithValidation(
-                    'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js',
-                    'OrbitControls'
-                  ),
-                  loadScriptWithValidation(
-                    'https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.min.js',
-                    'TWEEN.js'
-                  ),
-                ])
-              )
-              .then(() => {
-                console.log('✅ All scripts loaded in proper order');
-                initSolarSystem();
-              })
-              .catch((error) => {
-                console.error('❌ Script loading failed:', error);
-                showError('Failed to load required libraries: ' + error.message);
-              });
         }
 
         function initSolarSystem() {
@@ -908,7 +979,7 @@ export default function SolarSystemPage() {
                 let vrTourPanel = null;
 
                 function disableVr(reason) {
-                    vrButton.innerHTML = '🚫 ' + reason;
+                    vrButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>🚫 ' + reason;
                     vrButton.disabled = true;
                     vrButton.style.opacity = "0.5";
                     vrStatus.textContent = 'WebXR VR not available (' + reason + ')';
@@ -1779,7 +1850,7 @@ export default function SolarSystemPage() {
     document.write(htmlContent)
     document.close()
 
-    console.log("🚀 Solar System Explorer loaded successfully with VR tour support and fullscreen functionality")
+    console.log("🚀 Solar System Explorer loaded successfully with Nine-Dot Waffle Menu")
   }, [])
 
   return (
